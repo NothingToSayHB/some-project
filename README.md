@@ -14,3 +14,7 @@ entrust 2 pages
 entrust footer
 
 ------
+mobile version!
+
+------
+clear card after purchase
