@@ -86,27 +86,30 @@
 
     });
    
- 
+        
     let btnCheck = document.querySelector('.btn-pink');
     let form = document.createElement('div');
     form.classList.add('form', 'row');
     form.id = 'form';
-    form.innerHTML = `<div class="close-bl float-right"><a class="close" href="#"><i class="fas fa-times"></i></a></div>
-    <div class="col-12 input d-flex text-center">
-    <p class="info">Name</p>
-    <input class="form-input"/>
+    form.innerHTML = `
+    <div class="close-bl float-right">
+        <a class="close" href="#"><i class="fas fa-times"></i></a>
     </div>
     <div class="col-12 input d-flex text-center">
-    <p class="info">Email</p>
-    <input class="form-input"/>
+        <p class="info">Name</p>
+        <input class="form-input"/>
     </div>
     <div class="col-12 input d-flex text-center">
-    <p class="info">Phone number</p>
-    <input class="form-input"/>
+        <p class="info">Email</p>
+        <input class="form-input"/>
+    </div>
+    <div class="col-12 input d-flex text-center">
+        <p class="info">Phone number</p>
+        <input class="form-input"/>
     </div>
     <div class="col-12 submit d-flex">
-    <p id="form-price">Total: </p>
-    <a href="#" id="submit" class="btn float-right">Buy cackes</a>
+        <p id="form-price">Total: </p>
+        <a href="#" id="submit" class="btn float-right">Buy cackes</a>
     </div>`;
     let closeForm = form.childNodes[0].children[0].children[0];
 
@@ -172,7 +175,7 @@
         const totalMoney = total.reduce((total, item) => {
             total += item;
             return total;
-        },0);
+        }, 0);
         const finalPrice = totalMoney.toFixed(2);
         document.getElementById('cart-total').textContent = finalPrice;
         document.querySelector('.item-total').textContent = finalPrice;
@@ -185,80 +188,44 @@
 })();
 
 // фильтр
-// Мне правда очень жаль я сожалею ... это времнно
+
 (() => {
     let filterItems = document.querySelectorAll('.filter-btn');
-    let items = document.querySelectorAll('.card');
-    let cakeArr= [];
-    let sweeArr = [];
-    let cupcakeArr = [];
-    let dougnutArr = [];
-    items.forEach((item) => {
-        if (item.childNodes[3].children[0].children[0].textContent == 'cake item') {
-        cakeArr.push(item);
-        } else if(item.childNodes[3].children[0].children[0].textContent == 'sweet item') {
-        sweeArr.push(item);
-        } else if (item.childNodes[3].children[0].children[0].textContent == 'cupcake item') {
-        cupcakeArr.push(item);
-        } else if (item.childNodes[3].children[0].children[0].textContent == 'dougnut item') {
-        dougnutArr.push(item); 
-        }
-      
-    });
   
-    filterItems[0].addEventListener('click', () => {
-        let newArr = [...sweeArr, ...cupcakeArr, ...dougnutArr, ...cakeArr];
-        newArr.forEach((item) => {
-            item.classList.remove('d-none');
+    for (let i = 0; i < filterItems.length; i++) {
+    filterItems[i].addEventListener('click', ({ target }) => {
+        let storeItems = document.querySelectorAll('.store-item');
+        storeItems.forEach((item) => {
+            if (item.getAttribute('data-item') !== target.getAttribute('data-filter')) {
+                item.classList.add('d-opacite');
+            } else {
+                item.classList.remove('d-opacite');
+            }
+            if (target.getAttribute('data-filter') == 'all') {
+                item.classList.remove('d-opacite');
+            }
         });
-    });
-    filterItems[1].addEventListener('click', () => {
-        let newArr = [...sweeArr, ...cupcakeArr, ...dougnutArr];
-        newArr.forEach((item) => {
-            item.classList.add('d-none');
-        });
-        let newArr2 = [...cakeArr]; //.....
-        newArr2.forEach((item) => {
-            item.classList.remove('d-none');
-        });
-    });
-    filterItems[2].addEventListener('click', () => {
-        let newArr = [...sweeArr, ...cakeArr, ...dougnutArr];
-        newArr.forEach((item) => {
-            item.classList.add('d-none');
-        });
-        let newArr2 = [...cupcakeArr]; //.....
-        newArr2.forEach((item) => {
-            item.classList.remove('d-none');
-        });
-        
-    });
-    filterItems[3].addEventListener('click', () => {
-        let newArr = [...cupcakeArr, ...cakeArr, ...dougnutArr];
-        newArr.forEach((item) => {
-            item.classList.add('d-none');
-        });
-        let newArr2 = [...sweeArr]; //.....
-        newArr2.forEach((item) => {
-            item.classList.remove('d-none');
-        });
-    });
-    filterItems[4].addEventListener('click', () => {
-        let newArr = [...cupcakeArr, ...cakeArr, ...sweeArr];
-        newArr.forEach((item) => {
-            item.classList.add('d-none');
-        });
-        let newArr2 = [...dougnutArr]; //.....
-        newArr2.forEach((item) => {
-            item.classList.remove('d-none');
+    })
+    }
+  
+    let searchItem = document.getElementById('search-item');
+    searchItem.addEventListener('input', ({ target }) => {
+        let cards = document.querySelectorAll('.card');
+        cards.forEach((item) => {
+            let name = item.querySelector('.store-item-name');
+            name = name.textContent.toLowerCase();
+            if (name.indexOf(target.value.toLowerCase()) !== -1) {
+                item.classList.remove('d-opacite');
+            } else {
+                item.classList.add('d-opacite');
+            }
         });
     });
  
 })();
 
 
-// фильтер (передалть)
-// поиск (еще нет)
+
 // кнопки 
 // 2 страницы (еще нет)
 // футер бы еще доделать (сделать)

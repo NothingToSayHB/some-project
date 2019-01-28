@@ -315,3 +315,7 @@ body {
   border-color: red !important;
   transition: all 300ms ease-in-out;
 }
+.d-opacite {
+  opacity: 0.3;
+  pointer-events: none;
+}
