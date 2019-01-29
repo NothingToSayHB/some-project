@@ -20,13 +20,13 @@
         btn.addEventListener('click', ({ target }) => {
             if (target.parentElement.classList.contains('store-item-icon')) {
                 let fullPath = target.parentElement.previousElementSibling.src;
-                let pos = fullPath.indexOf(`img`) + 3; //... такие дела
+                let pos = fullPath.indexOf(`img`) + 3;
                 let partPath = fullPath.slice(pos);
 
                 const item = {};
                 item.img = `img.cart${partPath}`;
 
-                let name = target.parentElement.parentElement.nextElementSibling
+                 let name = target.parentElement.parentElement.nextElementSibling
                 .children[0].children[0].textContent;
                 
                 let price = target.parentElement.parentElement.nextElementSibling
@@ -109,15 +109,16 @@
         <p id="form-price">Total: </p>
         <a href="#" id="submit" class="btn float-right">Buy cackes</a>
     </div>`;
+
     let closeForm = form.childNodes[1].children[0].children[0];
      btnCheck.addEventListener('click', () => {
         showTotals();
         fonBlock.appendChild(form);
         fonBlock.classList.toggle('d-none');
+        fonBlock.classList.add('show-cart');
         document.body.style.overflow = 'hidden'; // ..................
 
         let formPrice = document.getElementById('cart-total').textContent;
-        console.log(form.childNodes[7])
         form.childNodes[9].children[0].textContent = `Total: $${formPrice}`;
         
         let submitButton = document.getElementById('submit');
@@ -241,9 +242,7 @@
             container.classList.add('show');
             
             let src = target.src;
-            console.log(src);
             counter = imageList.indexOf(src);
-            console.log(counter)
             item.style.backgroundImage = `url(${src})`;
         });
     });
@@ -267,3 +266,30 @@
     });
 })();
 // супернеобходимо переписать получение доступа к элементам...
+
+// скролл при клике на нав-элементы (взято из интернета)
+$(document).ready(function(){
+    $("#myNav").on("click","a", function (event) {
+        event.preventDefault();
+        let id  = $(this).attr('href'),
+            top = $(id).offset().top;
+    $('body,html').animate({scrollTop: top}, 1500);
+    });
+
+    $("#explore").on("click","a", function (event) {
+        event.preventDefault();
+        let id  = $(this).attr('href'),
+            top = $(id).offset().top;
+    $('body,html').animate({scrollTop: top}, 1500);
+
+    });
+
+    $(".banner").on("click","a", function (event) {
+        event.preventDefault();
+        let id  = $(this).attr('href'),
+            top = $(id).offset().top;
+    $('body,html').animate({scrollTop: top}, 1500);
+
+    });
+});
+    
