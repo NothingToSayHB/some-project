@@ -123,7 +123,7 @@
         
         let submitButton = document.getElementById('submit');
 
-        submitButton.addEventListener('click', () => { // доделать проверку на цену и сделать валидацию инпатов
+        submitButton.addEventListener('click', () => { 
             let inputs = document.querySelectorAll('.form-input');
             let check = true;
             inputs.forEach((item) => {
@@ -265,9 +265,8 @@
         item.style.backgroundImage = `url(${imageList[counter]})`;
     });
 })();
-// супернеобходимо переписать получение доступа к элементам...
 
-// скролл при клике на нав-элементы (взято из интернета)
+// скролл
 $(document).ready(function(){
     $("#myNav").on("click","a", function (event) {
         event.preventDefault();
