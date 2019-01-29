@@ -221,4 +221,49 @@
  
 })();
 
+// слайдер картинок
+(() => {
+    let imageList = [];
+    let counter = 0;
+
+    let images = document.querySelectorAll('.store-img');
+    let container = document.querySelector('.lightbox-container');
+    let item = document.querySelector('.lightbox-item');
+    let closeIcon = document.querySelector('.lightbox-close');
+    let btnLeft = document.querySelector('.btn-left');
+    let btnRight = document.querySelector('.btn-right');
+
+    images.forEach((item) => {
+        imageList.push(item.src);
+    });
+    images.forEach((img) => {
+        img.addEventListener('click', ({ target }) => {
+            container.classList.add('show');
+            
+            let src = target.src;
+            console.log(src);
+            counter = imageList.indexOf(src);
+            console.log(counter)
+            item.style.backgroundImage = `url(${src})`;
+        });
+    });
+    closeIcon.addEventListener('click', () => {
+        container.classList.remove('show');
+    });
+    btnLeft.addEventListener('click', () => {
+        counter--;
+        if (counter < 0) {
+            counter = imageList.length - 1;
+        }
+        item.style.backgroundImage = `url(${imageList[counter]})`;
+    });
+
+    btnRight.addEventListener('click', () => {
+        counter++;
+        if (counter > imageList.length - 1) {
+            counter = 0;
+        }
+        item.style.backgroundImage = `url(${imageList[counter]})`;
+    });
+})();
 // супернеобходимо переписать получение доступа к элементам...

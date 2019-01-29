@@ -96,8 +96,6 @@ body {
 .cart-item {
   transition: all 2s ease-in-out;
 }
-
-
 .cart-item-remove {
   color: var(--mainPink);
   transition: all 1s ease-in-out;
@@ -230,18 +228,18 @@ body {
 .lightbox-control:hover {
   color: var(--mainYellow);
 }
-.btnLeft {
+.btn-left {
   top: 50%;
   left: 0;
   transform: translateX(-60%);
 }
-.btnRight {
+.btn-right {
   top: 50%;
   right: 0;
   transform: translateX(60%);
 }
 
-.fon{
+.fon {
   width: 100%;
   height: 100%;
   background: var(--mainGrey);
@@ -249,13 +247,13 @@ body {
   top: 0;
   overflow-x: hidden;
 }
-.close-bl{
+.close-bl {
   float: right;
   width: 100%;
   
 }
 
-.form{
+.form {
   position: absolute;
   top: 0;
   right: 0;
@@ -270,39 +268,39 @@ body {
   box-shadow: 6px 0px 129px 6px rgba(239,121,152,1);
   
 }
-.form .input{
+.form .input {
   padding-top: 10px;
 }
-.form .input input{
+.form .input input {
   border-right: none;
   border-top: none;
   border-left: none;
-  border-color: rgb(249, 228, 148);
+  border-color: var(--mainYellow);
   background: rgb(255, 255, 255);
   transition: all 300ms ease-in-out;
 }
-.form .input input:focus{
+.form .input input:focus {
   outline-offset: 0px;
   outline: 0px;
   border-radius: .25rem;
 }
-.info{
+.info {
   margin-bottom: 5px;
   width: 20%;
 }
-.form-input{
+.form-input {
   width: 60%;
 }
-.close{
+.close {
   padding-right: 15px;
 }
 .close i {
-  color:#ef7998;
+  color: var(--mainPink);
 }
-.form .submit{
+.form .submit {
   padding-top: 15px;
 }
-.form .submit a{
+.form .submit a {
   padding: 0;
   display: block;
   margin: 0 auto;
@@ -310,7 +308,7 @@ body {
 .form .submit a:focus{
   box-shadow: none;
 }
-.error-input{
+.error-input {
   border: 3px solid;
   border-color: red !important;
   transition: all 300ms ease-in-out;
@@ -318,4 +316,38 @@ body {
 .d-opacite {
   opacity: 0.3;
   pointer-events: none;
+}
+
+.services {
+  color: var(--mainWhite);
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+   url('../img/servicesBcg.jpeg') center/cover fixed no-repeat;
+}
+.service-title {
+  letter-spacing: 0.5rem;
+}
+.service-text {
+  word-spacing: 0.5rem;
+}
+.footer-title {
+  background: var(--mainBlack);
+}
+.footer-contact {
+  background: var(--mainGrey);
+}
+.footer-icon {
+  font-size: 1.5rem;
+  color: var(--mainWhite);
+
+}
+.footer-icon:hover{
+  color: var(--mainPink);
+  transition: all 300ms ease-in-out;
+}
+
+@media screen and (max-width: 991px) {
+  .cart {
+    width: 18rem;
+    padding: 2rem 1.5rem;
+  }
 }
