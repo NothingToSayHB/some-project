@@ -1,5 +1,3 @@
-// показать карточку ну ту что корзина
-
 (() => {
     const cartInfo = document.getElementById('cart-info');
     const cart = document.getElementById('cart');
@@ -111,8 +109,7 @@
         <p id="form-price">Total: </p>
         <a href="#" id="submit" class="btn float-right">Buy cackes</a>
     </div>`;
-    let closeForm = form.childNodes[0].children[0].children[0];
-
+    let closeForm = form.childNodes[1].children[0].children[0];
      btnCheck.addEventListener('click', () => {
         showTotals();
         fonBlock.appendChild(form);
@@ -120,9 +117,9 @@
         document.body.style.overflow = 'hidden'; // ..................
 
         let formPrice = document.getElementById('cart-total').textContent;
-
-        form.childNodes[8].children[0].textContent = `Total: $${formPrice}`;
-
+        console.log(form.childNodes[7])
+        form.childNodes[9].children[0].textContent = `Total: $${formPrice}`;
+        
         let submitButton = document.getElementById('submit');
 
         submitButton.addEventListener('click', () => { // доделать проверку на цену и сделать валидацию инпатов
@@ -224,8 +221,4 @@
  
 })();
 
-
-
-// кнопки 
-// 2 страницы (еще нет)
-// футер бы еще доделать (сделать)
+// супернеобходимо переписать получение доступа к элементам...
